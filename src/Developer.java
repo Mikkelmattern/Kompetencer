@@ -3,11 +3,27 @@ import java.util.List;
 public class Developer {
     private String name;
     private List<Skill> skills;
-    public void addSkill(){
-        skills.add();
+    Developer(String name){
+        this.name = name;
     }
-    public void updateSkillLevel(){
-        skills.set();
+
+    public void addSkill(String skill) {
+        skills.add(new Skill(skill, 0));
+    }
+
+    public void addSkill(String skill, int level) {
+        skills.add(new Skill(skill, level));
+    }
+
+    public void updateSkillLevel() {
+        // skills.set();
+    }
+
+    public String getName() {
+        return name;
+    }
+    public List<Skill> showSkills(){
+        return skills;
     }
 
 }

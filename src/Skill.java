@@ -6,4 +6,7 @@ public class Skill {
         this.name = name;
         this.level = level;
     }
+    public String getName(){
+        return name;
+    }
 }
