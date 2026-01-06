@@ -42,7 +42,7 @@ public class Team {
         return name;
     }
     public String toString(){
-        return name;
+        return name + developer;
     }
 
 }

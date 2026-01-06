@@ -25,5 +25,11 @@ public class Developer {
     public List<Skill> showSkills(){
         return skills;
     }
+    public String toString(){
+        if(skills == null){
+            return name;
+        }
+        return name + skills;
+    }
 
 }
