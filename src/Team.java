@@ -5,6 +5,9 @@ public class Team {
     private String name;
     List<Developer> developer = new ArrayList<>();
 
+    Team (String name){
+        this.name = name;
+    }
     public void addDeveloper(String name) {
         developer.add(new Developer(name));
     }
@@ -36,6 +39,9 @@ public class Team {
     }
 
     public String getName() {
+        return name;
+    }
+    public String toString(){
         return name;
     }
 

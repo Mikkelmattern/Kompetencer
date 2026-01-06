@@ -15,8 +15,8 @@ public class Developer {
         skills.add(new Skill(skill, level));
     }
 
-    public void updateSkillLevel() {
-        // skills.set();
+    public void updateSkillLevel(String name, int indexPlace, int newLevel) {
+        skills.set(indexPlace, new Skill(name,newLevel));
     }
 
     public String getName() {
