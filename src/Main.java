@@ -73,8 +73,8 @@ public class Main {
                                                         if (choice1.equals(s.getName())) {
                                                             while (true) {
                                                                 System.out.println("Hvad niveu skal det sættes til? (1-10)");
-                                                                choice1 = sc.nextLine();
                                                                 while (true) {
+                                                                    choice1 = sc.nextLine();
                                                                     try {
                                                                         int i = Integer.parseInt(choice1);
                                                                         if (i >= 0 && i <= 10) {
