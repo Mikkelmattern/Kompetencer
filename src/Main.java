@@ -12,6 +12,20 @@ public class Main {
         }
         return result;
     }
+
+    public Team biggestTeam(List<Team> t) {
+        if(t.isEmpty()){
+            return null;
+        }
+        Team biggest = t.get(0);
+        for (Team te : t) {
+            if ((te.getDeveloperTeam().size() > biggest.getDeveloperTeam().size())) {
+                biggest = te;
+            }
+        }
+        return biggest;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         List<Team> teamList = new ArrayList<>();
@@ -156,7 +170,7 @@ public class Main {
                         System.out.println("Mest kompetente: " + mostComp.getName() + " (level " + mostCompLevel + ")");
                     }
                 }
-                case "5":{
+                case "5": {
                     Map<String, Integer> req = new HashMap<>();
                     req.put("Java", 3);
                     req.put("SQL", 2);

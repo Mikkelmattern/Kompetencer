@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class Developer {
     private String name;
-    private List<Skill> skills;
+    private List<Skill> skills = new ArrayList<>();
 
     Developer(String name) {
         this.name = name;
