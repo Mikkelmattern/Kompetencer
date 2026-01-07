@@ -1,19 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
+    public static List<Developer> findDevs(List<Team> teams, Map<String, Integer> reqs) {
+        List<Developer> result = new ArrayList<>();
+        for (Team t : teams) {
+            for (Developer d : t.getDeveloperTeam()) {
+                if (d.meetsRequirements(reqs)) {
+                    result.add(d);
+                }
+            }
+        }
+        return result;
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         List<Team> teamList = new ArrayList<>();
         List<String> teamListString = new ArrayList<>();
-
         while (true) {
-            System.out.println("1: Se teams\n2: Tilføj team");
+            System.out.println("1: Se teams\n2: Tilføj team\n3: Se alle udviklere");
             String choice = sc.nextLine();
 
-            while (!(choice.equalsIgnoreCase("1") || choice.equalsIgnoreCase("2"))) {
-                System.out.println("Vælg 1 eller 2");
+            while (!(choice.equalsIgnoreCase("1") || choice.equalsIgnoreCase("2") || choice.equalsIgnoreCase("3"))) {
+                System.out.println("Vælg 1, 2 eller 3");
                 choice = sc.nextLine();
             }
             switch (choice) {
@@ -122,8 +130,45 @@ public class Main {
                     teamList.add(newTeam);
                     teamListString.add(choice2);
                 }
-                default:
-                    break;
+                case "3": {
+                    for (Team t : teamList) {
+                        t.printTeamOverview();
+                    }
+                }
+                case "4": {
+                    System.out.println("Vælg et skill for at finde met kompetente udvikler");
+                    String choice4 = sc.nextLine();
+                    Developer mostComp = null;
+                    int mostCompLevel = 0;
+                    for (Team t : teamList) {
+                        for (Developer d : t.getDeveloperTeam()) {
+                            for (Skill s : d.showSkills()) {
+                                if (choice4.equalsIgnoreCase(s.getName()) && s.getLevel() > mostCompLevel) {
+                                    mostCompLevel = s.getLevel();
+                                    mostComp = d;
+                                }
+                            }
+                        }
+                    }
+                    if (mostComp == null) {
+                        System.out.println("Ingen udvikler har skill: " + choice4);
+                    } else {
+                        System.out.println("Mest kompetente: " + mostComp.getName() + " (level " + mostCompLevel + ")");
+                    }
+                }
+                case "5":{
+                    Map<String, Integer> req = new HashMap<>();
+                    req.put("Java", 3);
+                    req.put("SQL", 2);
+
+                    List<Developer> matches = findDevs(teamList, req);
+
+                    if (matches.isEmpty()) {
+                        System.out.println("Ingen udviklere matcher kravene");
+                    } else {
+                        System.out.println(matches);
+                    }
+                }
 
             }
         }

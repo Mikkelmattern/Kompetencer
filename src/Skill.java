@@ -9,6 +9,9 @@ public class Skill {
     public String getName(){
         return name;
     }
+    public int getLevel(){
+        return level;
+    }
     public String toString(){
         if(level == 0){
             return name+"1 "+level;
